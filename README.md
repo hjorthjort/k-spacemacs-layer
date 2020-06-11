@@ -21,3 +21,7 @@ Installation
 
 Then simply add 'k-framework' as one of your configuration layers in your spacemacs config.
 
+Updating
+========
+
+This tutorial is used as reference for updating the syntax highlighting: <http://ergoemacs.org/emacs/elisp_syntax_coloring.html>
