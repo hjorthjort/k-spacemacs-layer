@@ -1,5 +1,5 @@
 K Spacemacs Layer
-=========================
+=================
 
 This is a Spacemacs layer for K which provides syntax highlighting via k3-mode.
 
@@ -14,7 +14,7 @@ Key Bindings and Commands
 
 
 Installation
-==============
+============
         $ git clone https://github.com/robkorn/k-spacemacs-layer
         $ cd k-spacemacs-layer 
         $ mv k-framework ~/.emacs.d/private/local
