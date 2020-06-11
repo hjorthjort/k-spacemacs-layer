@@ -35,7 +35,8 @@
 ;; Set up the regexes
 
 ;; Metalanguage.
-(setq k-keywords-regex (concat (regexp-opt k-keywords 'words) "::=\\||")
+(setq k-keywords-regex (regexp-opt k-keywords 'words)
+      k-keywords-special-regex "::=\\||"
       k-declarations "\\(syntax\\|sort\\|op\\) \\([a-zA-Z{}\\-]+\\)"
       k-rewrites-regex "=>\\|<[^ ]+>")
 
@@ -49,6 +50,7 @@
         (,k-syntax-terminals-regex . font-lock-constant-face)
         (,k-declarations           2 font-lock-function-name-face)
         (,k-keywords-regex         . font-lock-keyword-face)
+        (,k-keywords-special-regex . font-lock-keyword-face)
        )
 )
 
