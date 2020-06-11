@@ -41,7 +41,7 @@
       k-rewrites-regex "=>\\|<[^ ]+>")
 
 ;; Common constructs.
-(setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\||->\\|.\\|`\\w+")
+(setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\||->\\|\\.\\s-\\|`\\w+")
 
 ;; Put them all together
 ;;
