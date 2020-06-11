@@ -44,8 +44,10 @@
 )
 
 ;; Put them all together
+;;
 (setq k-font-lock-keywords
-      `((,k-declarations 2 font-lock-builtin-face)
+      `(("|\\|=>\\|~>\\|\\.\\.\\.\\|<[^ ]+>" . font-lock-type-face)
+        (,k-declarations 2 font-lock-builtin-face)
         (,k-keywords-regex . font-lock-keyword-face)
         (,k-syntax-terminals-regex . font-lock-constant-face)
        )
