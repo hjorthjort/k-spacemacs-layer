@@ -33,7 +33,7 @@
                  "sort" "op" "subsort" "rule" "context" "eq" "ceq" "load" "when" "require" "configuration" "context" "requires" "ensures"))
 
 ;; Set up the regexes
-(setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\||->\\|`\\w+"
+(setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\||->\\|.\\|`\\w+"
       k-keywords-regex (concat (regexp-opt k-keywords 'words) "::=\\||")
       k-declarations "\\(syntax\\|sort\\|op\\) \\([a-zA-Z{}\\-]+\\)"
       k-rewrites-regex "=>\\|<[^ ]+>")
