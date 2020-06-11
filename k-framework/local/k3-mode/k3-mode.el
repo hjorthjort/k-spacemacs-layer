@@ -29,27 +29,26 @@
 )
 
 ;;;; Syntax Highlighting ;;;;
-(setq k-keywords
-      '("syntax" "priorities" "left" "right" "non-assoc" "module" "endmodule" "imports" "::=" "|"
-        "sort" "op" "subsort" "rule" "context" "eq" "ceq" "load" "when" "require" "configuration" "context" "requires" "ensures")
-      k-syntax-terminals-regex
-      "`\\w+"
-      k-declarations ;; Syntax highlight the name after a declaration
-      "\\(syntax\\|sort\\|op\\) \\([a-zA-Z{}\\-]+\\)"
-)
+(setq k-keywords '("syntax" "priorities" "left" "right" "non-assoc" "module" "endmodule" "imports" "::=" "|"
+                 "sort" "op" "subsort" "rule" "context" "eq" "ceq" "load" "when" "require" "configuration" "context" "requires" "ensures"))
+
+(setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\|`\\w+")
+
+(setq k-declarations "\\(syntax\\|sort\\|op\\) \\([a-zA-Z{}\\-]+\\)")
+
+(setq k-rewrites-regex "=>\\|<[^ ]+>")
 
 ;; Set up the regexes
 (setq k-keywords-regex
-      (regexp-opt k-keywords 'words)
-)
+      (regexp-opt k-keywords 'words))
 
 ;; Put them all together
 ;;
 (setq k-font-lock-keywords
-      `(("|\\|=>\\|~>\\|\\.\\.\\.\\|<[^ ]+>" . font-lock-type-face)
-        (,k-declarations 2 font-lock-builtin-face)
-        (,k-keywords-regex . font-lock-keyword-face)
+      `((,k-rewrites-regex         . font-lock-type-face)
         (,k-syntax-terminals-regex . font-lock-constant-face)
+        (,k-declarations           2 font-lock-function-name-face)
+        (,k-keywords-regex         . font-lock-keyword-face)
        )
 )
 
