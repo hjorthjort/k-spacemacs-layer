@@ -29,7 +29,11 @@
 )
 
 ;;;; Syntax Highlighting ;;;;
-(setq k-keywords-regex       "syntax\\|priorities\\|left\\|right\\|non-assoc\\|module\\|endmodule\\|imports\\|::=\\||\\|sort\\|op\\|subsort\\|rule\\|context\\|eq\\|ceq\\|load\\|when\\|require\\|configuration\\|context\\|requires\\|ensures"
+(setq k-keywords '("syntax" "priorities" "left" "right" "non-assoc" "module" "endmodule" "imports" "::=" "|"
+                 "sort" "op" "subsort" "rule" "context" "eq" "ceq" "load" "when" "require" "configuration" "context" "requires" "ensures"))
+
+;; Set up the regexes
+(setq k-keywords-regex (regexp-opt k-keywords 'words)
       k-syntax-terminals-regex "\\.\\.\\.\\|~>\\|`\\w+"
       k-declarations "\\(syntax\\|sort\\|op\\) \\([a-zA-Z{}\\-]+\\)"
       k-rewrites-regex "=>\\|<[^ ]+>")
