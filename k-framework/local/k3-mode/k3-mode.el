@@ -53,14 +53,15 @@
 ;; Common constructs.
 (setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\||->\\|\\.\\s-\\|`\\w+"
       k-common-words-regex (regexp-opt k-common-words 'words)
-      k-hash-symbols-regex  "#And\\|#Ceil\\|#Equals\\|#Exists\\|#False\\|#Or\\|#Not\\|#True\\|#as\\|#fun\\|#if\\|#then\\|#else\\|#fi")
+      k-hash-symbols-regex "\\(#\\(?:And\\|Ceil\\|E\\(?:\\(?:qual\\|xist\\)s\\)\\|False\\|Not\\|Or\\|True\\|as\\|else\\|f\\(?:i\\|un\\)\\|if\\|then\\)\\)\\b"
+)
 
 ;; Put them all together
 ;;
 (setq k-font-lock-keywords
       `((,k-rewrites-regex         . font-lock-type-face)
         (,k-syntax-terminals-regex . font-lock-constant-face)
-        (,k-hash-symbols-regex       . font-lock-constant-face)
+        (,k-hash-symbols-regex     . font-lock-constant-face)
         (,k-common-words-regex     . font-lock-constant-face)
         (,k-declarations           2 font-lock-function-name-face)
         (,k-keywords-regex         . font-lock-keyword-face)
