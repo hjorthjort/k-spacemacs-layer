@@ -6,7 +6,9 @@
 ;;     (setq load-path (cons "path/to/this/file" load-path))
 ;;     (load-library "k3-mode")
 ;;     (add-to-list 'auto-mode-alist '("\\.k$" . k3-mode)) ;; to launch k3-mode for .k files
-;;     (setq markdown-code-lang-modes (cons '("k" . k3-mode) '(markdown-code-lang-modes))) ;; Use C-c C-x C-f to turn on highlighting within code block in Markdown mode
+;; If you want to enable inline syntax highlighting in Markdown:
+;;     (use-package markdown-mode)
+;;     (push '("k" . k3-mode) markdown-code-lang-modes) ;; Use C-c C-x C-f to turn on highlighting on and off.
 
 ;; Currently has syntax highlighting for:
 ;;  - keywords
