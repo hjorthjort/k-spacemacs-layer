@@ -20,7 +20,7 @@
 ;; Also has a menu and compilation through C-c C-c
 
 
-;; Author: Michael Ilseman
+;; Authors: Michael Ilseman & Rikard Hjort
 
 (require 'comint)
 
