@@ -49,7 +49,7 @@
 (setq k-keywords-regex (regexp-opt k-keywords 'words)
       k-annotations-regex (regexp-opt k-annotations 'symbols)
       k-keywords-special-regex "::=\\||"
-      k-declarations "\\(syntax\\|sort\\|op\\) \\([a-zA-Z{}\\-]+\\)"
+      k-declarations "\\(syntax\\|sort\\|op\\) +\\(\\({.+} +\\)?[a-zA-Z{}\\-]+\\)"
       k-rewrites-regex "=>\\|<[^ ]+>")
 
 ;; Common constructs.
