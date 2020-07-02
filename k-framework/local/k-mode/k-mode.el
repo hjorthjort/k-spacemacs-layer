@@ -21,7 +21,6 @@
 ;;  - some common symbols from the standard library
 ;; Also has a menu and compilation through C-c C-c
 
-
 ;; Authors: Michael Ilseman & Rikard Hjort
 
 (require 'comint)
@@ -59,7 +58,6 @@
 )
 
 ;; Put them all together
-;;
 (setq k-font-lock-keywords
       `((,k-rewrites-regex         . font-lock-type-face)
         (,k-syntax-terminals-regex . font-lock-constant-face)
@@ -83,7 +81,6 @@
   (if k-dash-comments (modify-syntax-entry ?- ". 1b2b" k-mode-syntax-table))
 )
 
-
 ;;;; K Bindings and menu ;;;;
 (defvar k-prev-load-file nil
   "Record the last directory and file used in loading or compiling"
@@ -91,22 +88,7 @@
 (defcustom k-source-modes '(k-mode)
   "Determine if a buffer represents a k file"
 )
-;; (defun k-mode-kompile (cmd)
-;;   ;; (interactive (comint-get-source "Kompile k file: " k-prev-load-file k-source-modes nil))
-;;   ;; (comint-check-source file-name) ; check to see if buffer has been modified and not saved
-;;   ;; (setq k-prev-load-file (cons (file-name-directory file-name)
-;;   ;;                              (file-name-nondirectory file-name)))
-;;   ;; ;; (comint-send-string (inferior-lisp-proc)
-;; 	;; ;; 	      (format inferior-lisp-load-command file-name))
-;;   ;; ;; (switch-to-lisp t))
-;;   ;; (message file-name)
-;;   ;; (setq kompile-buffer (make-comint "Kompile" "zsh" nil))
-;;   ;; (comint-send-string kompile-buffer "cd" nil (file-name-directory file-name))
-;;   ;; (comint-send-string kompile-buffer "~/k-framework/tools/kompile.pl" nil (file-name-nondirectory file-name))
-;;   (interactive "scmd")
-;;   (compile cmd)
-;;   nil
-;; )
+
 (defun k-mode-about ()
   (interactive)
   (message "k-mode for the K Framework")
