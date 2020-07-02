@@ -1,14 +1,14 @@
-;;; k3-mode.el -- Emacs mode for the K Framework
+;;; k-mode.el -- Emacs mode for the K Framework
 
-;; Updated from k-mode.el to support the new keywords in K3
+;; Updated from k-mode.el to support the new keywords in K
 
 ;; Usage: add the below to your .emacs file:
 ;;     (setq load-path (cons "path/to/this/file" load-path))
-;;     (load-library "k3-mode")
-;;     (add-to-list 'auto-mode-alist '("\\.k$" . k3-mode)) ;; to launch k3-mode for .k files
+;;     (load-library "k-mode")
+;;     (add-to-list 'auto-mode-alist '("\\.k$" . k-mode)) ;; to launch k-mode for .k files
 ;; If you want to enable inline syntax highlighting in Markdown:
 ;;     (use-package markdown-mode)
-;;     (push '("k" . k3-mode) markdown-code-lang-modes) ;; Use C-c C-x C-f to turn on highlighting on and off.
+;;     (push '("k" . k-mode) markdown-code-lang-modes) ;; Use C-c C-x C-f to turn on highlighting on and off.
 
 ;; Currently has syntax highlighting for:
 ;;  - keywords
@@ -50,7 +50,7 @@
       k-annotations-regex (regexp-opt k-annotations 'symbols)
       k-keywords-special-regex "::=\\||"
       k-declarations "\\(syntax\\|sort\\|op\\) +\\(\\({.+} +\\)?[a-zA-Z{}\\-]+\\)"
-      k-rewrites-regex "=>\\|<[^ ]+>")
+      k-rewrites-regex "=>\\|<[^>]+>")
 
 ;; Common constructs.
 (setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\||->\\|\\.\\s-\\|`\\w+"
@@ -75,12 +75,12 @@
   "Set up comment highlighting"
 
   ;; comment style "// ..." and "/* ... */"
-  (modify-syntax-entry ?\/ ". 124b" k3-mode-syntax-table)
-  (modify-syntax-entry ?\n "> b" k3-mode-syntax-table)
-  (modify-syntax-entry ?* ". 23" k3-mode-syntax-table)
+  (modify-syntax-entry ?\/ ". 124b" k-mode-syntax-table)
+  (modify-syntax-entry ?\n "> b" k-mode-syntax-table)
+  (modify-syntax-entry ?* ". 23" k-mode-syntax-table)
 
   ;; comment style "-- ..."
-  (if k-dash-comments (modify-syntax-entry ?- ". 1b2b" k3-mode-syntax-table))
+  (if k-dash-comments (modify-syntax-entry ?- ". 1b2b" k-mode-syntax-table))
 )
 
 
@@ -88,10 +88,10 @@
 (defvar k-prev-load-file nil
   "Record the last directory and file used in loading or compiling"
 )
-(defcustom k-source-modes '(k3-mode)
+(defcustom k-source-modes '(k-mode)
   "Determine if a buffer represents a k file"
 )
-;; (defun k3-mode-kompile (cmd)
+;; (defun k-mode-kompile (cmd)
 ;;   ;; (interactive (comint-get-source "Kompile k file: " k-prev-load-file k-source-modes nil))
 ;;   ;; (comint-check-source file-name) ; check to see if buffer has been modified and not saved
 ;;   ;; (setq k-prev-load-file (cons (file-name-directory file-name)
@@ -107,26 +107,26 @@
 ;;   (compile cmd)
 ;;   nil
 ;; )
-(defun k3-mode-about ()
+(defun k-mode-about ()
   (interactive)
-  (message "k3-mode for the K Framework")
+  (message "k-mode for the K Framework")
 )
 
-(defun setup-k3-mode-map ()
-  (setq k3-mode-map (make-sparse-keymap))
+(defun setup-k-mode-map ()
+  (setq k-mode-map (make-sparse-keymap))
 
   ;; Keyboard shortcuts
-  (define-key k3-mode-map (kbd "C-c C-c") 'compile)
+  (define-key k-mode-map (kbd "C-c C-c") 'compile)
 
   ;; Define the menu
-  (define-key k3-mode-map [menu-bar] (make-sparse-keymap))
+  (define-key k-mode-map [menu-bar] (make-sparse-keymap))
 
   (let ((menuMap (make-sparse-keymap "K Framework")))
-    (define-key k3-mode-map [menu-bar k] (cons "K Framework" menuMap))
+    (define-key k-mode-map [menu-bar k] (cons "K Framework" menuMap))
     (define-key menuMap [about]
-      '("About k3-mode" . k3-mode-about))
+      '("About k-mode" . k-mode-about))
     ;; (define-key menuMap [customize]
-    ;;   '("Customize k3-mode" . k-customize))
+    ;;   '("Customize k-mode" . k-customize))
     (define-key menuMap [separator]
       '("--"))
     (define-key menuMap [kompile]
@@ -139,9 +139,9 @@
 
 ;;;; K Mode ;;;;
 
-(define-derived-mode k3-mode fundamental-mode
-  "k3 mode"
-  "Major Mode for the K3 framwork"
+(define-derived-mode k-mode fundamental-mode
+  "k mode"
+  "Major Mode for the K framwork"
   (setq font-lock-defaults '((k-font-lock-keywords)))
 
   ;; Comment entries
@@ -151,11 +151,11 @@
   (setq comment-start "//")
 
   ;; Shortcuts and menu
-  (setup-k3-mode-map)
-  (use-local-map k3-mode-map)
+  (setup-k-mode-map)
+  (use-local-map k-mode-map)
 
   ;; Clear up memory
   ;;(setq k-keywords nil k-keywords-regex nil)
 )
 
-(provide 'k3-mode)
+(provide 'k-mode)
