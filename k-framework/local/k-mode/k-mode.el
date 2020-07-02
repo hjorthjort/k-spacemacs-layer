@@ -35,12 +35,15 @@
    Currently doesn't do anything."
 )
 
+(defvar k-custom-highlights nil
+  "A list of words to highlight, beyond the builtin syntax. For example \"'(\"andBool\" \"orBool\" \"+Int\")\""
+  )
+
 ;;;; Syntax Highlighting ;;;;
 (setq k-keywords '("syntax" "priorities" "left" "right" "non-assoc" "module" "endmodule" "imports" "sort" "op" "subsort" "rule" "context" "eq" "ceq" "load" "when" "require" "configuration" "context" "requires" "ensures" ))
 
+;; TODO: Only highlight these when inside square brackets.
 (setq k-annotations '("alias" "alias-rec" "anywhere" "bracket" "concrete" "context" "cool" "freshGenerator" "function" "functional" "heat" "hook" "hybrid" "klabel" "macro" "macro-rec" "memo" "owise" "priority" "result" "seqstrict" "simplification" "smtlib" "strict" "symbol" "token" "unboundVariables"))
-
-(setq k-common-words '("andBool" "orBool" "notBool"))
 
 ;; Set up the regexes
 
@@ -53,20 +56,20 @@
 
 ;; Common constructs.
 (setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\||->\\|\\.\\s-\\|`\\w+"
-      k-common-words-regex (regexp-opt k-common-words 'words)
+      k-custom-highlights-regex (regexp-opt k-custom-highlights 'words)
       k-hash-symbols-regex "\\(#\\(?:And\\|Ceil\\|E\\(?:\\(?:qual\\|xist\\)s\\)\\|False\\|Not\\|Or\\|True\\|as\\|else\\|f\\(?:i\\|un\\)\\|if\\|then\\)\\)\\b"
 )
 
 ;; Put them all together
 (setq k-font-lock-keywords
-      `((,k-rewrites-regex         . font-lock-type-face)
-        (,k-syntax-terminals-regex . font-lock-constant-face)
-        (,k-hash-symbols-regex     . font-lock-constant-face)
-        (,k-common-words-regex     . font-lock-constant-face)
-        (,k-declarations           2 font-lock-function-name-face)
-        (,k-keywords-regex         . font-lock-keyword-face)
-        (,k-keywords-special-regex . font-lock-keyword-face)
-        (,k-annotations-regex      . font-lock-builtin-face)))
+      `((,k-rewrites-regex          . font-lock-type-face)
+        (,k-syntax-terminals-regex  . font-lock-constant-face)
+        (,k-hash-symbols-regex      . font-lock-constant-face)
+        (,k-custom-highlights-regex . font-lock-constant-face)
+        (,k-declarations            2 font-lock-function-name-face)
+        (,k-keywords-regex          . font-lock-keyword-face)
+        (,k-keywords-special-regex  . font-lock-keyword-face)
+        (,k-annotations-regex       . font-lock-builtin-face)))
 
 ;; Handle comments
 (defun set-comment-highlighting ()
