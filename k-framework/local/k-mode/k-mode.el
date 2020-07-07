@@ -16,7 +16,7 @@
 ;;  - quoted identifiers (e.g. for terminals in the syntax)
 ;;  - annotations
 ;;  - matching-logic symbols
-;;  - some common symbols from the standard library
+;;  - custom highlights through user-controlled variables
 ;; Also has a menu and compilation through C-c C-c
 
 ;; Authors: Michael Ilseman & Rikard Hjort
