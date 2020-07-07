@@ -30,10 +30,6 @@
   "Set to make \"--\" be used as a beginning of a line comment
    (emacs's syntax table is unable to differentiate 3 character long comment beginners)"
 )
-(defvar k-path "~/k-framework"
-  "Path to the k-framework. Set if you wish to use kompile from emacs. Defaults to ~/k-framework.
-   Currently doesn't do anything."
-)
 
 (defvar k-custom-word-highlights nil
   "A list of words to highlight, beyond the builtin syntax. For example \"'(\"andBool\" \"orBool\" \"+Int\")\""
