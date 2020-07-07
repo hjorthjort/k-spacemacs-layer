@@ -7,10 +7,9 @@ It includes support for highlighting code blocks within Markdown files.
 Key Bindings and Commands
 =========================
 
-| Key                | Function                      |
-|--------------------|-------------------------------|
-| <kbd>SPC m c</kbd> | Compile with a custom command |
-
+| Key                | Function                       |
+|--------------------|--------------------------------|
+| <kbd>SPC m c</kbd> | Compile with a custom command. |
 
 Installation
 ============
