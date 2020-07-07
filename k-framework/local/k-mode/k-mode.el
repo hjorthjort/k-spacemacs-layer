@@ -1,7 +1,5 @@
 ;;; k-mode.el -- Emacs mode for the K Framework
 
-;; Updated from k-mode.el to support the new keywords in K
-
 ;; Usage: add the below to your .emacs file:
 ;;     (setq load-path (cons "path/to/this/file" load-path))
 ;;     (load-library "k-mode")
@@ -139,9 +137,6 @@
   ;; Shortcuts and menu
   (setup-k-mode-map)
   (use-local-map k-mode-map)
-
-  ;; Clear up memory
-  ;;(setq k-keywords nil k-keywords-regex nil)
 )
 
 (provide 'k-mode)
