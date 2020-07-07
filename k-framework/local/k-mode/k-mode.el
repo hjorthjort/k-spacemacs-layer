@@ -35,8 +35,12 @@
    Currently doesn't do anything."
 )
 
-(defvar k-custom-highlights nil
+(defvar k-custom-word-highlights nil
   "A list of words to highlight, beyond the builtin syntax. For example \"'(\"andBool\" \"orBool\" \"+Int\")\""
+  )
+
+(defvar k-custom-highlights-regex nil
+  "A list of words to highlight, beyond the builtin syntax. For example \"<-\\|\\|->\""
   )
 
 ;;;; Syntax Highlighting ;;;;
@@ -56,20 +60,21 @@
 
 ;; Common constructs.
 (setq k-syntax-terminals-regex "\\.\\.\\.\\|~>\\||->\\|\\.\\s-\\|`\\w+"
-      k-custom-highlights-regex (regexp-opt k-custom-highlights 'words)
+      k-custom-word-highlights-regex (regexp-opt k-custom-word-highlights 'words)
       k-hash-symbols-regex "\\(#\\(?:And\\|Ceil\\|E\\(?:\\(?:qual\\|xist\\)s\\)\\|False\\|Not\\|Or\\|True\\|as\\|else\\|f\\(?:i\\|un\\)\\|if\\|then\\)\\)\\b"
 )
 
 ;; Put them all together
 (setq k-font-lock-keywords
-      `((,k-rewrites-regex          . font-lock-type-face)
-        (,k-syntax-terminals-regex  . font-lock-constant-face)
-        (,k-hash-symbols-regex      . font-lock-constant-face)
-        (,k-custom-highlights-regex . font-lock-constant-face)
-        (,k-declarations            2 font-lock-function-name-face)
-        (,k-keywords-regex          . font-lock-keyword-face)
-        (,k-keywords-special-regex  . font-lock-keyword-face)
-        (,k-annotations-regex       . font-lock-builtin-face)))
+      `((,k-custom-word-highlights-regex . font-lock-constant-face)
+        (,k-custom-highlights-regex      . font-lock-constant-face)
+        (,k-rewrites-regex               . font-lock-type-face)
+        (,k-syntax-terminals-regex       . font-lock-constant-face)
+        (,k-hash-symbols-regex           . font-lock-constant-face)
+        (,k-declarations                 2 font-lock-function-name-face)
+        (,k-keywords-regex               . font-lock-keyword-face)
+        (,k-keywords-special-regex       . font-lock-keyword-face)
+        (,k-annotations-regex            . font-lock-builtin-face)))
 
 ;; Handle comments
 (defun set-comment-highlighting ()
