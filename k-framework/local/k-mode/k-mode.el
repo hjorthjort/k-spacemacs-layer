@@ -38,7 +38,7 @@
   )
 
 ;;;; Syntax Highlighting ;;;;
-(setq k-keywords '("configuration" "context" "endmodule" "non-assoc" "ensures" "imports" "left" "module" "priorities" "require" "requires" "right" "rule" "sort" "syntax" "when"))
+(setq k-keywords '("configuration" "context" "endmodule" "non-assoc" "ensures" "imports" "left" "module" "priorities" "require" "requires" "right" "rule" "claim" "sort" "syntax" "when"))
 
 ;; TODO: Only highlight these when inside square brackets.
 (setq k-annotations '("alias" "alias-rec" "anywhere" "bracket" "concrete" "context" "cool" "freshGenerator" "function" "functional" "heat" "hook" "hybrid" "klabel" "left" "macro" "macro-rec" "memo" "owise" "priority" "result" "right" "seqstrict" "simplification" "smtlib" "strict" "symbol" "token" "unboundVariables"))
